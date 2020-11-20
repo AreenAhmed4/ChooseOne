@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <div id="ControlDiv">
+
+
+
+
+
+    </div>
+
+    <div id="DetailsDiv">
+        <div>Hiiiiiii</div>
+    </div>
+
+    <h1 id="Result"></h1>
+
+    <script type="application/javascript">
+        let btn1 = document.createElement("button");
+        btn1.setAttribute("id", "Btn1");
+        btn1.innerHTML = "Add Friend";
+        btn1.addEventListener("click", AddNewTxtBox);
+        document.getElementById("ControlDiv").appendChild(btn1);
+
+        let btn2 = document.createElement("button");
+        btn2.setAttribute("id", "Btn2");
+        btn2.innerHTML = "Choose One!";
+        btn2.addEventListener("click", ChooseOne);
+        document.getElementById("ControlDiv").appendChild(btn2);
+
+
+
+        function AddNewTxtBox() {
+            //alert("I will add a new one");
+            let txtbox = document.createElement("input");
+            txtbox.setAttribute("type", "text");
+            txtbox.setAttribute("placeholder", "Enter Name"+document.getElementById("DetailsDiv").children.length); // ehich is after + to view the number next to the text
+            document.getElementById("DetailsDiv").appendChild(txtbox);
+        }
+
+        function ChooseOne() {
+            //alert("I will choose One!")
+            let allelem= document.getElementsByTagName("input");
+            
+            let names = [];
+            for (let i = 0; i < allelem.length; i++)
+            {
+                //alert(allelem[i].value);
+                if (allelem[i].getAttribute("type") == "text")
+                names.push(allelem[i].value);
+            }
+            console.log(names);
+
+            let RandomNumber = Math.floor(Math.random() * names.length);
+
+            document.getElementById("Result").innerHTML = names[RandomNumber];
+        }
+
+    </script>
+
+
+
+</body>
+
+
+</html>
